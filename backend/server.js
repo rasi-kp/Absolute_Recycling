@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 require('dotenv').config();
-require("./config/postgreesql")
+require("./config/mongoconnection")
 var logger = require('morgan');
 const userRouter = require("./routes/user")
 const adminRouter = require("./routes/admin")

@@ -1,37 +1,30 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/postgreesql');
+const mongoose = require('mongoose');
 
-// User model
-const User = sequelize.define('User', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+// Define the User Schema
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
   },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
+  email: {
+    type: String,
+    required: true,
     unique: true,
+    trim: true,
+    lowercase: true
   },
-  password_hash: {
-    type: DataTypes.STRING,
-    allowNull: false,
+  password: {
+    type: String,
+    required: true
   },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+  role: {
+    type: String,
+    default: 'user'
   },
-}, {
-  tableName: 'users',
-  timestamps: false,
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
-// // Sync the model with the database
-// (async () => {
-//   try {
-//     await User.sync({ alter: true });
-//     console.log('User table updated!');
-//   } catch (error) {
-//     console.error('Error syncing user table:', error);
-//   }
-// })();
-module.exports = User;
+
+// Export the User model
+module.exports = mongoose.model('User', userSchema);

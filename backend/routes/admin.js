@@ -7,9 +7,7 @@ const { auth } = require('../midleware/isAuthAdmin');
 router.post('/login', login);
 
 // User routes (protected)
-router.get('/users', auth, getTasks);
-router.post('/users', auth, createTask);
-router.put('/users/:id', auth, updateTask);
-router.delete('/users/:id', auth, deleteTask);
+// router.get('/users', auth, getTasks);
+
 
 module.exports = router;

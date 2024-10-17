@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 // Define the Collection Schema
 const salesdataSchema = new mongoose.Schema({
+  salePersonName: {
+    type: String,
+    required: true,
+  },
   dateOfCollection: {
     type: Date,
     required: true

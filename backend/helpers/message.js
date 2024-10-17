@@ -1,11 +1,47 @@
 const nodemailer = require('nodemailer');
-const randomstring = require('randomstring');
 
 module.exports = {
-    generateOTP: () => {
-        return randomstring.generate({
-            length: 6,
-            charset: 'numeric'
+    
+    sendSalesDataEmail: async (salesData,email) => {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_ID,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+        const mailOptions = {
+            from: process.env.EMAIL_USER, // Sender address
+            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2}`, 
+            subject: 'New Sales Data Recorded', // Subject
+            text: `
+            A new sales record has been added:
+
+            Salesperson Name :${email}
+            
+            Client Name: ${salesData.clientName}
+            Client Number: ${salesData.clientNumber}
+            Location: ${salesData.location}
+            Google Map Location: ${salesData.googleMapLocation}
+            Date of Collection: ${salesData.dateOfCollection}
+            Time of Collection: ${salesData.timeOfCollection}
+            Type of Material: ${salesData.typeOfMaterial}
+            No. of Pallets: ${salesData.noOfPallets}
+            Type of Truck: ${salesData.typeOfTruck}
+            Man Power Required: ${salesData.manPowerRequired ? 'Yes' : 'No'}
+            TOO or Gate Pass: ${salesData.tooOrGatePass}
+      
+            Recorded at: ${salesData.createdAt}
+          `,
+        };
+
+        // Send the email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error sending email:', error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
         });
     },
     sendOTPEmail: async (email, otp) => {
@@ -39,6 +75,5 @@ module.exports = {
             text: data,
         };
         await transporter.sendMail(mailOptions);
-    }
-
+    },
 }

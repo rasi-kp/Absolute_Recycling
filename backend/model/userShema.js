@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'user'
   },
+  isBlocked: {
+    type: Boolean,
+    default: false // Users are not blocked by default
+  },
   date: {
     type: Date,
     default: Date.now

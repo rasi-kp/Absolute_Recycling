@@ -17,7 +17,7 @@ module.exports = {
             text: `
             A new sales record has been added:
 
-            Salesperson Name :${email}
+            Salesperson Email :${email}
             
             Client Name: ${salesData.clientName}
             Client Number: ${salesData.clientNumber}

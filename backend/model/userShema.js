@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false // Users are not blocked by default
   },
+  firstLogin: {
+    type: Boolean,
+    default: true
+  },
   date: {
     type: Date,
     default: Date.now

@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../model/userShema');
 const Admin = require('../model/adminSchema');
-const Task = require('../model/salesdataSchema');
 const salesdataSchema = require('../model/salesdataSchema');
 
 module.exports = {

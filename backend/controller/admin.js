@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/userShema');
 const Admin = require('../model/adminSchema');
 const salesdataSchema = require('../model/salesdataSchema');
+const userShema = require('../model/userShema');
 
 module.exports = {
   login: async (req, res) => {
@@ -119,6 +120,15 @@ module.exports = {
     try {
       const salesData = await salesdataSchema.find();
       return res.status(200).json({data:salesData});
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  },
+  alluser: async (req, res) => {
+    try {
+      const users = await userShema.find();
+      return res.status(200).json({data:users});
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Internal server error' });

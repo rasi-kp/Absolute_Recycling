@@ -23,7 +23,7 @@ module.exports = {
             Client Number: ${salesData.clientNumber}
             Location: ${salesData.location}
             Google Map Location: ${salesData.googleMapLocation}
-            Date of Collection: ${salesData.dateOfCollection}
+            Date of Collection: ${new Date(salesData.dateOfCollection).toLocaleDateString()}
             Time of Collection: ${salesData.timeOfCollection}
             Type of Material: ${salesData.typeOfMaterial}
             No. of Pallets: ${salesData.noOfPallets}
@@ -31,7 +31,7 @@ module.exports = {
             Man Power Required: ${salesData.manPowerRequired ? 'Yes' : 'No'}
             TOO or Gate Pass: ${salesData.tooOrGatePass}
       
-            Recorded at: ${salesData.createdAt}
+            Recorded at: ${new Date(salesData.createdAt).toLocaleDateString()}
           `,
         };
 

@@ -59,7 +59,7 @@ module.exports = {
         return res.status(404).json({ error: 'User not found' });
       }
 
-      return res.status(200).json({ message: `User with email ${email} deleted successfully` });
+      return res.status(200).json({ message: `Successfully Deleted ${email}` });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: 'Internal server error' });
@@ -77,7 +77,7 @@ module.exports = {
       user.isBlocked = true;
       await user.save();
 
-      return res.status(200).json({ message: `User with email ${email} has been blocked` });
+      return res.status(200).json({ message: `${email} has been blocked` });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: 'Internal server error' });
@@ -95,7 +95,7 @@ module.exports = {
       user.isBlocked = false;
       await user.save();
 
-      return res.status(200).json({ message: `User with email ${email} has been unblocked` });
+      return res.status(200).json({ message: `${email} unblocked` });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: 'Internal server error' });
@@ -131,6 +131,23 @@ module.exports = {
       return res.status(200).json({data:users});
     } catch (error) {
       console.error(error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  },
+  addadmin: async (req, res) => {
+    const { email, password } = req.body;
+    try {
+      const existingUser = await Admin.findOne({ email }); // Use email to check for duplicates
+      if (existingUser) {
+        return res.status(400).json({ error: 'Email already exists' });
+      }
+      const password_hash = await bcrypt.hash(password, 10);
+      const user = new Admin({ email, password:password_hash});
+      await user.save();
+
+      return res.status(201).json({ message: 'Admin created successfully', });
+    } catch (error) {
+      console.log(error);
       return res.status(500).json({ error: 'Internal server error' });
     }
   },

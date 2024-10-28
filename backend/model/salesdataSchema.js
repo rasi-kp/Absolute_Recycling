@@ -46,7 +46,7 @@ const salesdataSchema = new mongoose.Schema({
     required: true
   },
   manPowerRequired: {
-    type: Boolean,
+    type: String,
     required: true
   },
   tooOrGatePass: {

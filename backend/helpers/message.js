@@ -12,7 +12,7 @@ module.exports = {
         });
         const mailOptions = {
             from: process.env.EMAIL_USER, // Sender address
-            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2}`, 
+            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2},${process.env.EMAIL_RECEIVER3}`, 
             subject: 'New Collection Booking Request', // Subject
             text: `
             Collection Booking Details:

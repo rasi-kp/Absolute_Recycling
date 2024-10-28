@@ -13,9 +13,9 @@ module.exports = {
         const mailOptions = {
             from: process.env.EMAIL_USER, // Sender address
             to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2}`, 
-            subject: 'New Sales Data Recorded', // Subject
+            subject: 'New Collection Booking Request', // Subject
             text: `
-            A new sales record has been added:
+            Collection Booking Details:
 
             Salesperson Email :${email}
             

@@ -1,0 +1,29 @@
+/* #grad1 {
+  background-color: #cdf0f0; 
+  background-image: linear-gradient(#c9eef2, #0b3774); 
+} */
+
+.navbar {
+  background-color: #3a6dcb; 
+}
+
+.navbar .container {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.navbar .navbar-logo {
+  margin-right: 10px;
+  max-height: 50px; 
+  width: auto; 
+}
+
+.navbar-brand {
+  color: #ffffff;
+  font-weight: 100;
+  font-size: 10 px;
+  display: flex;
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, login, postsales, getsales, changePassword, } = require('../controller/user');
+const { login, postsales, getsales, changePassword, } = require('../controller/user');
 const { auth } = require('../midleware/isAuthUser');
 
 // User routes

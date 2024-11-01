@@ -40,7 +40,7 @@ module.exports = {
         noOfPallets, typeOfTruck, manPowerRequired, tooOrGatePass
       } = req.body; // Extract data
       
-      if (!dateOfCollection || !clientName || !clientNumber || !location || !googleMapLocation ||
+      if (!dateOfCollection || !clientName || !location ||
         !timeOfCollection || !typeOfMaterial || !noOfPallets || !typeOfTruck || !manPowerRequired || !tooOrGatePass) {
         return res.status(400).json({ error: 'Please fill all the fields' });
       }

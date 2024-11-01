@@ -17,7 +17,6 @@ const salesdataSchema = new mongoose.Schema({
   },
   clientNumber: {
     type: String,
-    required: true,
     trim: true
   },
   location: {
@@ -25,8 +24,7 @@ const salesdataSchema = new mongoose.Schema({
     required: true
   },
   googleMapLocation: {
-    type: String,  // You can store a Google Maps link or coordinates
-    required: true
+    type: String  // You can store a Google Maps link or coordinates
   },
   timeOfCollection: {
     type: String,

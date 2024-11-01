@@ -15,23 +15,22 @@ module.exports = {
             to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2},${process.env.EMAIL_RECEIVER3}`, 
             subject: 'New Collection Booking Request', // Subject
             text: `
-            Collection Booking Details:
-
             Salesperson Email :${email}
-            
-            Client Name: ${salesData.clientName}
-            Client Number: ${salesData.clientNumber}
-            Location: ${salesData.location}
-            Google Map Location: ${salesData.googleMapLocation}
-            Date of Collection: ${new Date(salesData.dateOfCollection).toLocaleDateString()}
-            Time of Collection: ${salesData.timeOfCollection}
-            Type of Material: ${salesData.typeOfMaterial}
-            No. of Pallets: ${salesData.noOfPallets}
-            Type of Truck: ${salesData.typeOfTruck}
-            Man Power Required: ${salesData.manPowerRequired ? 'Yes' : 'No'}
-            TOO or Gate Pass: ${salesData.tooOrGatePass}
+
+            Collection Booking Details
+            Date of Collection : ${new Date(salesData.dateOfCollection).toLocaleDateString()}
+            Time of Collection : ${salesData.timeOfCollection}
+            Client Name : ${salesData.clientName}
+            Client Number : ${salesData.clientNumber}
+            Location : ${salesData.location}
+            Type of Material : ${salesData.typeOfMaterial}
+            No. of Pallets : ${salesData.noOfPallets}
+            Type of Truck : ${salesData.typeOfTruck}
+            Man Power Required : ${salesData.manPowerRequired ? 'Yes' : 'No'}
+            TOO or Gate Pass : ${salesData.tooOrGatePass}
+            Remarks : ${salesData.googleMapLocation}
       
-            Recorded at: ${new Date(salesData.createdAt).toLocaleDateString()}
+            Booking Date : ${new Date(salesData.createdAt).toLocaleDateString()}
           `,
         };
 

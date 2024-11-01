@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 module.exports = {
     
-    sendSalesDataEmail: async (salesData,email) => {
+    sendSalesDataEmail: async (salesData, email) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -10,31 +10,39 @@ module.exports = {
                 pass: process.env.EMAIL_PASS,
             },
         });
+        
+        const formatDate = (date) => {
+            return new Date(date).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            }).replace(/ /g, '-'); 
+        };
+
         const mailOptions = {
-            from: process.env.EMAIL_USER, // Sender address
-            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2},${process.env.EMAIL_RECEIVER3}`, 
-            subject: 'New Collection Booking Request', // Subject
+            from: process.env.EMAIL_USER, 
+            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2}, ${process.env.EMAIL_RECEIVER3}`, 
+            subject: 'New Collection Booking Request', 
             text: `
-            Salesperson Email :${email}
+            Salesperson Email: ${email}
 
             Collection Booking Details
-            Date of Collection : ${new Date(salesData.dateOfCollection).toLocaleDateString()}
-            Time of Collection : ${salesData.timeOfCollection}
-            Client Name : ${salesData.clientName}
-            Client Number : ${salesData.clientNumber}
-            Location : ${salesData.location}
-            Type of Material : ${salesData.typeOfMaterial}
-            No. of Pallets : ${salesData.noOfPallets}
-            Type of Truck : ${salesData.typeOfTruck}
-            Man Power Required : ${salesData.manPowerRequired ? 'Yes' : 'No'}
-            TOO or Gate Pass : ${salesData.tooOrGatePass}
-            Remarks : ${salesData.googleMapLocation}
+            Date of Collection: ${formatDate(salesData.dateOfCollection)}
+            Time of Collection: ${salesData.timeOfCollection}
+            Client Name: ${salesData.clientName}
+            Client Number: ${salesData.clientNumber}
+            Location: ${salesData.location}
+            Type of Material: ${salesData.typeOfMaterial}
+            No. of Pallets: ${salesData.noOfPallets}
+            Type of Truck: ${salesData.typeOfTruck}
+            Man Power Required: ${salesData.manPowerRequired ? 'Yes' : 'No'}
+            TOO or Gate Pass: ${salesData.tooOrGatePass}
+            Remarks: ${salesData.googleMapLocation}
       
-            Booking Date : ${new Date(salesData.createdAt).toLocaleDateString()}
+            Booking Date: ${formatDate(salesData.createdAt)}
           `,
         };
 
-        // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log('Error sending email:', error);
@@ -43,36 +51,4 @@ module.exports = {
             }
         });
     },
-    sendOTPEmail: async (email, otp) => {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_ID,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-        const mailOptions = {
-            from: 'rhmsonline@gmail.com',
-            to: email,
-            subject: 'OTP for Sign-up RHMS',
-            text: `Your OTP for sign-up is: ${otp}`,
-        };
-        await transporter.sendMail(mailOptions);
-    },
-    sendForm: async (email, data) => {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_ID,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-        const mailOptions = {
-            from: 'rhmsonline@gmail.com',
-            to: email,
-            subject: 'Form Submission',
-            text: data,
-        };
-        await transporter.sendMail(mailOptions);
-    },
-}
+};

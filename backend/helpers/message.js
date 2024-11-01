@@ -10,7 +10,6 @@ module.exports = {
                 pass: process.env.EMAIL_PASS,
             },
         });
-        
         const formatDate = (date) => {
             return new Date(date).toLocaleDateString('en-GB', {
                 day: '2-digit',
@@ -18,10 +17,9 @@ module.exports = {
                 year: 'numeric'
             }).replace(/ /g, '-'); 
         };
-
         const mailOptions = {
             from: process.env.EMAIL_USER, 
-            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2}, ${process.env.EMAIL_RECEIVER3}`, 
+            to: `${process.env.EMAIL_RECEIVER1}, ${process.env.EMAIL_RECEIVER2}, ${process.env.EMAIL_RECEIVER3},${process.env.EMAIL_RECEIVER4}`,
             subject: 'New Collection Booking Request', 
             text: `
             Salesperson Email: ${email}

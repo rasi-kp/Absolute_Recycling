@@ -17,7 +17,6 @@ const salesdataSchema = new mongoose.Schema({
   },
   clientNumber: {
     type: String,
-    trim: true
   },
   location: {
     type: String,

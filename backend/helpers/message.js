@@ -43,36 +43,5 @@ module.exports = {
             }
         });
     },
-    sendOTPEmail: async (email, otp) => {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_ID,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-        const mailOptions = {
-            from: 'rhmsonline@gmail.com',
-            to: email,
-            subject: 'OTP for Sign-up RHMS',
-            text: `Your OTP for sign-up is: ${otp}`,
-        };
-        await transporter.sendMail(mailOptions);
-    },
-    sendForm: async (email, data) => {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_ID,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-        const mailOptions = {
-            from: 'rhmsonline@gmail.com',
-            to: email,
-            subject: 'Form Submission',
-            text: data,
-        };
-        await transporter.sendMail(mailOptions);
-    },
+    
 }

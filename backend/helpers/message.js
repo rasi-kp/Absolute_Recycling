@@ -32,6 +32,7 @@ module.exports = {
             Location: ${salesData.location}
             Type of Material: ${salesData.typeOfMaterial}
             No. of Pallets: ${salesData.noOfPallets}
+            Packaging Type: ${salesData.packagingType}
             Type of Truck: ${salesData.typeOfTruck}
             Man Power Required: ${salesData.manPowerRequired ? 'Yes' : 'No'}
             TOO or Gate Pass: ${salesData.tooOrGatePass}

@@ -24,6 +24,7 @@ const Form = () => {
     timeOfCollection: "",
     typeOfMaterial: "",
     noOfPallets: "",
+    packagingType: "",
     typeOfTruck: "",
     manPowerRequired: "",
     tooOrGatePass: "",
@@ -179,6 +180,7 @@ const Form = () => {
                   required
                 />
               </div>
+              
               <div className="my-1">
                 <label htmlFor="noOfPallets" className="form-label">
                   No of Pallets<span className="text-danger"> *</span>
@@ -188,6 +190,19 @@ const Form = () => {
                   className="form-control border border-primary p-2 rounded"
                   id="noOfPallets"
                   value={formData.noOfPallets}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="my-1">
+                <label htmlFor="packagingType" className="form-label">
+                  Packaging Type
+                </label>
+                <input
+                  type="text"
+                  className="form-control border border-primary p-2 rounded"
+                  id="packagingType"
+                  value={formData.packagingType}
                   onChange={handleInputChange}
                   required
                 />

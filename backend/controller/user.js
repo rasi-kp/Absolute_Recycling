@@ -37,7 +37,7 @@ module.exports = {
       const {
         dateOfCollection, clientName, clientNumber, location,
         googleMapLocation, timeOfCollection, typeOfMaterial,
-        noOfPallets, typeOfTruck, manPowerRequired, tooOrGatePass
+        noOfPallets, packagingType, typeOfTruck, manPowerRequired, tooOrGatePass
       } = req.body; // Extract data
       
       if (!dateOfCollection || !clientName || !location ||
@@ -54,6 +54,7 @@ module.exports = {
         timeOfCollection,
         typeOfMaterial,
         noOfPallets,
+        packagingType,
         typeOfTruck,
         manPowerRequired,
         tooOrGatePass

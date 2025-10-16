@@ -37,6 +37,9 @@ const salesdataSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  packagingType: {
+    type: String,
+  },
   typeOfTruck: {
     type: String,
     // enum: ['1 Ton', '3 Ton', '10 Ton', 'Trailer', 'Dumper'],
